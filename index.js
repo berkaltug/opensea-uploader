@@ -17,7 +17,7 @@ const description = process.env.DESCRIPTION;
 const link = process.env.URL;
 const imageDir = path.join(__dirname, "images");
 const captchaKey=process.env.CAPTCHAKEY
-const chance=new Chance()
+
 async function connectWallet(page, metamask) {
   // OpenSea gives us a list of different wallet options. MetaMask is the first one.
   console.log("Connecting to Metamask...");
