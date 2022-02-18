@@ -4,12 +4,12 @@ import * as DotEnv from "dotenv";
 import fs from "fs";
 import path from "path";
 DotEnv.config();
-import { names } from "./names";
 import UserAgent from "user-agents";
 import  PuppeteerExtra  from "puppeteer-extra";
 import RecaptchaPlugin from "puppeteer-extra-plugin-recaptcha";
+import generateStupidName from "sillyname";
 
-const namesArr=names
+
 const seed = process.env.METAMASK_MNEMONIC_PHRASE;
 const collectionName = process.env.COLLECTION_NAME;
 const createAssetURL = `https://opensea.io/collection/${collectionName}/assets/create`;
@@ -17,6 +17,7 @@ const description = process.env.DESCRIPTION;
 const link = process.env.URL;
 const imageDir = path.join(__dirname, "images");
 const captchaKey=process.env.CAPTCHAKEY
+const chance=new Chance()
 async function connectWallet(page, metamask) {
   // OpenSea gives us a list of different wallet options. MetaMask is the first one.
   console.log("Connecting to Metamask...");
@@ -50,9 +51,9 @@ async function fillFields(
 ) {
   // Get and fill in the input name
   await page.focus("#name");
-  let newname=namesArr[0] + "'s Breasts"
+  let newname= generateStupidName() + "'s Breasts"
   await page.keyboard.type(newname, { delay: 25 });
-  namesArr.shift()
+ 
 
   // Get and fill in the description
   await page.focus("#description");

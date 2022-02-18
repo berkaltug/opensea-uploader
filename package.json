@@ -17,6 +17,7 @@
     "puppeteer": "^13.3.1",
     "puppeteer-extra": "^3.2.3",
     "puppeteer-extra-plugin-recaptcha": "^3.5.0",
+    "sillyname": "^0.1.0",
     "user-agents": "^1.0.925"
   },
   "devDependencies": {
